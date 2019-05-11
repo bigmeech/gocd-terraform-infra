@@ -1,2 +1,3 @@
 mkdir -p ./ssh
-ssh-keygen -t rsa -b 4096 -C "denachural@gmail.com" -f ./ssh/instance_keypair -P ""
+ssh-keygen -m PEM -t rsa -b 4096 -C "denachural@gmail.com" -f ./ssh/instance_keypair -P ""
+sudo openssl rsa -text -in ./ssh/instance_keypair -outform pem > ./ssh/instance_keypair.pem
