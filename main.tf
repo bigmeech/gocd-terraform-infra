@@ -3,10 +3,16 @@ provider "aws" {
   profile = "${var.profile}"
 }
 
+resource "aws_key_pair" "gocd_instance_keypair" {
+  key_name = "gocd-instance-key"
+  public_key = "${file("${path.module}/ssh/instance_keypair.pub")}"
+}
 
 resource "aws_instance" "gocd_instance" {
   ami = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
+
+  key_name = "${aws_key_pair.gocd_instance_keypair.key_name}"
 
   tags {
     Name = "GoCDServer"
@@ -15,9 +21,8 @@ resource "aws_instance" "gocd_instance" {
   provisioner "remote-exec" {
     connection {
       type = "ssh"
-      user = "${var.region}"
-      host_key = "${var.public_key}"
-      private_key = "${var.private_key}"
+      user = "ubuntu"
+      private_key = "${file("${path.module}/ssh/instance_keypair")}"
       script_path = "${path.cwd}/scripts/setup-docker.sh"
     }
   }
