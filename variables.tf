@@ -5,7 +5,3 @@ variable "region" {
 variable "profile" {
   default = "personal"
 }
-
-
-variable "public_key" {}
-variable "private_key" {}
