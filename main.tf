@@ -18,12 +18,21 @@ resource "aws_instance" "gocd_instance" {
     Name = "GoCDServer"
   }
 
+  connection {
+    type = "ssh"
+    user = "ubuntu"
+    private_key = "${file("${path.module}/ssh/instance_keypair")}"
+  }
+
+  provisioner "file" {
+    destination = "/tmp/setup-docker.sh"
+    source = "./scripts/setup-docker.sh"
+  }
+
   provisioner "remote-exec" {
-    connection {
-      type = "ssh"
-      user = "ubuntu"
-      private_key = "${file("${path.module}/ssh/instance_keypair")}"
-      script_path = "${path.cwd}/scripts/setup-docker.sh"
-    }
+    inline = [
+      "chmod +x /tmp/setup-docker.sh",
+      "/tmp/setup-docker.sh"
+    ]
   }
 }
