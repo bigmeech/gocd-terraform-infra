@@ -21,3 +21,4 @@ sudo /etc/init.d/go-server start
 echo "Installing Elastic Agent plugin"
 wget "https://github.com/gocd-contrib/docker-swarm-elastic-agents/releases/download/${ELASTIC_AGENT_VERSION}/${ELASTIC_AGENT_FILENAME}"
 sudo mv $ELASTIC_AGENT_FILENAME "/var/lib/go-server/plugins/external/${ELASTIC_AGENT_FILENAME}"
+sudo /etc/init.d/go-server restart
