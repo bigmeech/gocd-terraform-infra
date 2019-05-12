@@ -13,3 +13,7 @@ data "aws_ami" "ubuntu" {
 
   owners = ["099720109477"] # Canonical
 }
+
+data "aws_route53_zone" "route_53_zone" {
+  name = "teleimpact.io"
+}
