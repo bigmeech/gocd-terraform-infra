@@ -9,3 +9,4 @@ dont have one then create one in `~/.aws/credentials`)
 - Run `./install.sh` to deploy infrastructure
 
 ### Test SSH Connection
+Our terraform exports the command required to ssh into our provisioned EC2 Instance using the export variable

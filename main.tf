@@ -29,10 +29,22 @@ resource "aws_instance" "gocd_instance" {
     source = "./scripts/setup-docker.sh"
   }
 
+  provisioner "file" {
+    destination = "/tmp/setup-gocd.sh"
+    source = "./scripts/setup-gocd.sh"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/setup-docker.sh",
       "/tmp/setup-docker.sh"
+    ]
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/setup-gocd.sh",
+      "/tmp/setup-gocd.sh"
     ]
   }
 }
