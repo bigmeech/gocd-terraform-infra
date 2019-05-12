@@ -8,5 +8,9 @@ The repo contains code to install a fully working GOCD Server configured to run 
 dont have one then create one in `~/.aws/credentials`)
 - Run `./install.sh` to deploy infrastructure
 
-### Test SSH Connection
-Our terraform exports the command required to ssh into our provisioned EC2 Instance using the export variable
+### Terraform exports
+
+|Variable|Purpose|
+|---------------|-----------------------------------------------------------------|
+| ssh_connection| Displays command needed to ssh into the provisioned EC2 Instance|
+|go_server_url| Public DNS of the provisioned instance|
