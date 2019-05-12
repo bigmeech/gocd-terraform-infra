@@ -10,6 +10,6 @@ echo -ne '\n' | sudo add-apt-repository ppa:openjdk-r/ppa
 sudo apt-get update
 sudo apt-get install -y openjdk-8-jre
 
-echo "Downloading go server"
+echo "Installing and starting go server"
 sudo apt-get install go-server
 sudo /etc/init.d/go-server start
