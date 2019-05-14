@@ -3,5 +3,5 @@ output "ssh_connection" {
 }
 
 output "go_server_url" {
-  value = "http://${aws_instance.gocd_instance.public_dns}:8153"
+  value = "https://${aws_route53_record.build_server_record.fqdn}"
 }
