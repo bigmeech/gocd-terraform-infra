@@ -14,3 +14,5 @@ dont have one then create one in `~/.aws/credentials`)
 |---------------|-----------------------------------------------------------------|
 | ssh_connection| Displays command needed to ssh into the provisioned EC2 Instance|
 |go_server_url| Public DNS of the provisioned instance|
+|domain| Domain to attach TLS Certiicate for Go
+| ec2_instance_size | EC2 Instance size 

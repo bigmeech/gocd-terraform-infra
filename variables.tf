@@ -8,3 +8,7 @@ variable "profile" {
 
 variable "subnet_group_prefix" {}
 variable "vpc_name_filter" {}
+
+variable "domain" {}
+
+variable "ec2_instance_size" {}

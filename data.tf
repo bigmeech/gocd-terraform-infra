@@ -33,3 +33,8 @@ data "aws_ami" "ubuntu" {
 data "aws_route53_zone" "route_53_zone" {
   name = "teleimpact.io"
 }
+
+data "aws_acm_certificate" "teleimpact_certificate" {
+  domain = "${var.domain}"
+  statuses = ["ISSUED"]
+}

@@ -10,7 +10,7 @@ resource "aws_key_pair" "gocd_instance_keypair" {
 
 resource "aws_route53_record" "build_server_record" {
   zone_id = "${data.aws_route53_zone.route_53_zone.id}"
-  name    = "gocd.build.teleimpact.io"
+  name    = "build.teleimpact.io"
   type    = "A"
 
   alias {
@@ -22,7 +22,7 @@ resource "aws_route53_record" "build_server_record" {
 
 resource "aws_instance" "gocd_instance" {
   ami = "${data.aws_ami.ubuntu.id}"
-  instance_type = "t2.micro"
+  instance_type = "${var.ec2_instance_size}"
 
   key_name = "${aws_key_pair.gocd_instance_keypair.key_name}"
 
