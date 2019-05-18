@@ -16,6 +16,7 @@ sudo apt-get install -y openjdk-8-jre
 
 echo "Installing and starting go server"
 sudo apt-get install go-server
+sudo usermod -a -G docker go
 sudo /etc/init.d/go-server start
 
 echo "Installing Elastic Agent plugin"
